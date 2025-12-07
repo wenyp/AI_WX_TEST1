@@ -1,0 +1,209 @@
+page {
+  margin: 0;
+  padding: 0;
+  background-color: #F5F5F5;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+.container {
+  position: relative;
+  width: 750rpx;
+  height: 1628rpx;
+  background-color: #F5F5F5;
+  overflow: hidden;
+  box-shadow: 0 0 40rpx rgba(0,0,0,0.1);
+}
+
+/* 顶部导航栏 */
+.nav-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+}
+.nav-back {
+  position: absolute;
+  left: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-title {
+  font-family: "Inter", sans-serif;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #000000;
+}
+
+/* 顶部白色背景 */
+.header-white-bg {
+  position: absolute;
+  top: 176rpx;
+  left: 0;
+  width: 750rpx;
+  height: 420rpx;
+  background-color: #FFFFFF;
+}
+
+/* 用户信息 */
+.avatar {
+  position: absolute;
+  left: 40rpx;
+  top: 246rpx;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  background-color: #D8D8D8;
+}
+.user-name {
+  position: absolute;
+  left: 180rpx;
+  top: 278rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #1F2937;
+}
+.icon-settings {
+  position: absolute;
+  left: 678rpx;
+  top: 290rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+/* 身份认证横幅 */
+.identity-banner {
+  position: absolute;
+  left: 32rpx;
+  top: 408rpx;
+  width: 686rpx;
+  height: 120rpx;
+  border-radius: 20rpx;
+  background: linear-gradient(270deg, #FDE7FF 0%, #E0E9FF 98%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+}
+.id-left { display: flex; align-items: center; }
+.id-icon-bg { width: 50rpx; height: 52rpx; display: flex; align-items: center; justify-content: center; }
+.icon-verify { width: 50rpx; height: 52rpx; }
+.id-text { margin-left: 28rpx; display: flex; flex-direction: column; gap: 4rpx; }
+.id-title { color: #1F2937; font-size: 28rpx; font-weight: 500; }
+.id-subtitle { color: #4B5563; font-size: 20rpx; font-weight: 500; }
+.id-button { width: 178rpx; height: 40rpx; border-radius: 23rpx; background: linear-gradient(270deg,#FF80FF 0%,#0303B8 100%); display: flex; align-items: center; justify-content: center; gap: 14rpx; padding: 0 20rpx; box-sizing: border-box; }
+.id-btn-text { color: #FFFFFF; font-size: 20rpx; font-weight: 500; }
+.icon-verify-cta { width: 44rpx; height: 28rpx; }
+
+/* 卡片区域 */
+.section-cards {
+  position: absolute;
+  left: 32rpx;
+  top: 616rpx;
+  width: 686rpx;
+  height: 284rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.card {
+  width: 327rpx;
+  height: 284rpx;
+  background-color: #FFFFFF;
+  border: 2rpx solid #F3F4F6;
+  border-radius: 20rpx;
+  padding: 32rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.card-title-wrap { display: flex; flex-direction: column; }
+.card-subtitle { color: #6B7280; font-size: 28rpx; }
+.card-number { color: #1F2937; font-size: 48rpx; font-weight: 600; margin-top: 6rpx; }
+.card-icon-bg { width: 80rpx; height: 80rpx; border-radius: 40rpx; display: flex; align-items: center; justify-content: center; }
+.card-icon-bg.blue { background-color: #EFF6FF; }
+.card-icon-bg.pink { background-color: rgba(255,128,255,0.1); }
+.card-icon { width: 28rpx; height: 28rpx; }
+.card-bottom { display: flex; justify-content: space-between; align-items: center; }
+.card-stat { display: flex; flex-direction: column; }
+.stat-label { color: #6B7280; font-size: 24rpx; }
+.stat-value { color: #1F2937; font-size: 28rpx; font-weight: 500; }
+.card-button { width: 100%; height: 72rpx; background-color: #0303B8; border-radius: 8rpx; display: flex; align-items: center; justify-content: center; }
+.card-button text { color: #FFFFFF; font-size: 28rpx; font-weight: 500; }
+
+/* 列表卡片 */
+.list-card {
+  position: absolute;
+  left: 32rpx;
+  top: 1164rpx;
+  width: 686rpx;
+  height: 220rpx;
+  background-color: #FFFFFF;
+  border: 2rpx solid #F3F4F6;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 4rpx rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+.list-item { height: 108rpx; padding: 0 32rpx; display: flex; align-items: center; justify-content: space-between; }
+.list-item.border { border-bottom: 2rpx solid #F5F5F5; }
+.list-text { color: #1F2937; font-size: 28rpx; font-weight: 500; }
+.icon-arrow-right { width: 14rpx; height: 28rpx; }
+
+/* 积分商城入口 */
+.points-item {
+  position: absolute;
+  left: 32rpx;
+  top: 940rpx;
+  width: 686rpx;
+  height: 160rpx;
+  background-color: #FFFFFF;
+  border: 2rpx solid #F3F4F6;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+}
+.points-left { display: flex; align-items: center; }
+.points-icon-bg { width: 80rpx; height: 80rpx; background-color: #FAF5FF; border-radius: 40rpx; display: flex; align-items: center; justify-content: center; }
+.points-icon { width: 28rpx; height: 28rpx; }
+.points-text { margin-left: 24rpx; display: flex; flex-direction: column; }
+.points-title { color: #1F2937; font-size: 28rpx; font-weight: 500; }
+.points-sub { color: #6B7280; font-size: 24rpx; }
+.points-right { display: flex; align-items: center; gap: 20rpx; }
+.badge { background-color: #FAF5FF; border-radius: 30rpx; padding: 4rpx 16rpx; }
+.badge text { color: #7C3AED; font-size: 24rpx; }
+
+/* 底部菜单 */
+.section-bottom-menu { position: absolute; bottom: 0; left: 0; width: 750rpx; height: 240rpx; z-index: 100; }
+.bottom-bg { position: absolute; top: 60rpx; left: 0; width: 750rpx; height: 180rpx; background-color: #FFFFFF; box-shadow: 0 -2rpx 0 #E9E9E9; }
+.tab-item { position: absolute; width: 112rpx; height: 104rpx; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
+.tab-icon { width: 48rpx; height: 48rpx; margin-bottom: 12rpx; }
+.tab-text { font-family: "Inter", sans-serif; font-size: 20rpx; font-weight: 500; line-height: 28rpx; text-align: center; }
+.tab-1 { left: 48rpx; top: 60rpx; }
+.tab-1 .tab-text { color: #7F7F7F; }
+.tab-2 { left: 184rpx; top: 60rpx; }
+.tab-2 .tab-text { color: #7F7F7F; }
+.tab-3-wrapper { position: absolute; left: 316rpx; top: 0; width: 114rpx; height: 164rpx; display: flex; flex-direction: column; align-items: center; }
+.tab-3-mascot { width: 114rpx; height: 134rpx; position: relative; }
+.tab-3-mascot-bg { position: absolute; bottom: 0; left: 0; width: 114rpx; height: 114rpx; border-radius: 50%; background: linear-gradient(180deg, #0303B8 37%, #FF80FF 100%); overflow: hidden; }
+.mascot-body { position: absolute; top: -14rpx; left: 10rpx; width: 100rpx; height: 284rpx; object-fit: cover; }
+.mascot-head { position: absolute; top: 6rpx; left: 10rpx; width: 100rpx; height: 284rpx; object-fit: cover; clip-path: inset(0 0 234rpx 0); z-index: 2; }
+.tab-3-text { margin-top: 2rpx; font-family: "Inter", sans-serif; font-size: 20rpx; font-weight: 500; line-height: 28rpx; color: #0303B8; }
+.tab-4 { left: 454rpx; top: 60rpx; }
+.tab-4 .tab-text { color: #7F7F7F; }
+.tab-5 { left: 590rpx; top: 60rpx; }
+.tab-5 .tab-text { color: #0303B8; }
+
+/* 图标尺寸复用 */
+.icon-back { width: 18rpx; height: 34rpx; }

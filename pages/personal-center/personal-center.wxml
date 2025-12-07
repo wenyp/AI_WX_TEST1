@@ -1,0 +1,140 @@
+<view class="container">
+  <!-- 顶部导航栏（使用自适应高度） -->
+  <view class="nav-bar" style="padding-top: {{statusBarHeight}}px; height: {{navContentHeight}}px;">
+    <view class="nav-back" style="height: {{menuButtonHeight}}px; width: {{menuButtonHeight}}px; margin-top: {{(navContentHeight - menuButtonHeight) / 2}}px;">
+      <image class="icon-back" src="./assets/icon-back.svg" mode="aspectFit"></image>
+    </view>
+    <view class="nav-title" style="line-height: {{navContentHeight}}px;">个人中心</view>
+  </view>
+
+  <!-- 顶部白色背景块 -->
+  <view class="header-white-bg"></view>
+
+  <!-- 用户信息 -->
+  <view class="avatar"></view>
+  <view class="user-name"><text>张伟伟</text></view>
+  <image class="icon-settings" src="./assets/icon-settings.svg" mode="aspectFit"></image>
+
+  <!-- 身份认证横幅 -->
+  <view class="identity-banner">
+    <view class="id-left">
+      <view class="id-icon-bg">
+        <image class="icon-verify" src="./assets/icon-verify.svg" mode="aspectFit"></image>
+      </view>
+      <view class="id-text">
+        <view class="id-title">身份认证</view>
+        <view class="id-subtitle">成为GEA的伙伴</view>
+      </view>
+    </view>
+    <view class="id-button">
+      <text class="id-btn-text">即刻验证</text>
+      <image class="icon-verify-cta" src="./assets/icon-verify-cta.svg" mode="aspectFit"></image>
+    </view>
+  </view>
+
+  <!-- 两张卡片：积分与签到 -->
+  <view class="section-cards">
+    <!-- 左卡：累计积分 -->
+    <view class="card card-score">
+      <view class="card-top">
+        <view class="card-title-wrap">
+          <view class="card-subtitle">累计积分</view>
+          <view class="card-number">500</view>
+        </view>
+        <view class="card-icon-bg blue">
+          <image class="card-icon" src="./assets/icon-coin.svg" mode="aspectFit"></image>
+        </view>
+      </view>
+      <view class="card-bottom">
+        <view class="card-stat">
+          <view class="stat-label">今日获得</view>
+          <view class="stat-value">120</view>
+        </view>
+        <view class="card-stat">
+          <view class="stat-label">本月获得</view>
+          <view class="stat-value">860</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 右卡：连续签到 -->
+    <view class="card card-checkin">
+      <view class="card-top">
+        <view class="card-title-wrap">
+          <view class="card-subtitle">连续签到</view>
+          <view class="card-number">0天</view>
+        </view>
+        <view class="card-icon-bg pink">
+          <image class="card-icon" src="./assets/icon-check.svg" mode="aspectFit"></image>
+        </view>
+      </view>
+      <view class="card-button">
+        <text>今日签到</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 列表项：我的活动 / 学习中心 -->
+  <view class="list-card">
+    <view class="list-item border">
+      <view class="list-text">我的活动</view>
+      <image class="icon-arrow-right" src="./assets/icon-arrow-right.svg" mode="aspectFit"></image>
+    </view>
+    <view class="list-item">
+      <view class="list-text">学习中心</view>
+      <image class="icon-arrow-right" src="./assets/icon-arrow-right.svg" mode="aspectFit"></image>
+    </view>
+  </view>
+
+  <!-- 积分商城入口 -->
+  <view class="points-item">
+    <view class="points-left">
+      <view class="points-icon-bg">
+        <image class="points-icon" src="./assets/icon-points.svg" mode="aspectFit"></image>
+      </view>
+      <view class="points-text">
+        <view class="points-title">积分商城</view>
+        <view class="points-sub">可用积分: 500</view>
+      </view>
+    </view>
+    <view class="points-right">
+      <view class="badge"><text>新品上架</text></view>
+      <image class="icon-arrow-right" src="./assets/icon-arrow-right.svg" mode="aspectFit"></image>
+    </view>
+  </view>
+
+  <!-- 底部菜单 -->
+  <view class="section-bottom-menu">
+    <view class="bottom-bg"></view>
+
+    <view class="tab-item tab-1" bindtap="goHome">
+      <image class="tab-icon icon-tab-home" src="./assets/icon-tab-home.svg" mode="aspectFit"></image>
+      <view class="tab-text">首页</view>
+    </view>
+
+    <view class="tab-item tab-2">
+      <image class="tab-icon icon-tab-college" src="./assets/icon-tab-college.svg" mode="aspectFit"></image>
+      <view class="tab-text">学院</view>
+    </view>
+
+    <view class="tab-3-wrapper">
+      <view class="tab-3-mascot">
+        <view class="tab-3-mascot-bg">
+          <image src="/pages/demo/assets/95c28a96892f7ccbd24508e4b4b87eaf.png" class="mascot-body" mode="aspectFill"></image>
+        </view>
+        <image src="/pages/demo/assets/95c28a96892f7ccbd24508e4b4b87eaf.png" class="mascot-head" mode="aspectFill"></image>
+      </view>
+      <view class="tab-3-text">AI对话</view>
+    </view>
+
+    <view class="tab-item tab-4">
+      <image class="tab-icon icon-tab-contact" src="./assets/icon-tab-contact.svg" mode="aspectFit"></image>
+      <view class="tab-text">联系</view>
+    </view>
+
+    <view class="tab-item tab-5">
+      <image class="tab-icon icon-tab-mine" src="./assets/icon-tab-mine.svg" mode="aspectFit"></image>
+      <view class="tab-text">我的</view>
+    </view>
+  </view>
+</view>

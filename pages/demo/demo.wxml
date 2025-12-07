@@ -156,7 +156,7 @@
         </view>
         
         <!-- Tab 5: 我的 -->
-        <view class="tab-item tab-5">
+        <view class="tab-item tab-5" bindtap="goPersonalCenter">
             <image class="tab-icon icon-tab-mine" src="./assets/icon-tab-mine.svg" mode="aspectFit"></image>
             <view class="tab-text">我的</view>
         </view>

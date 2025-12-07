@@ -35,5 +35,8 @@ Page({
       menuButtonTop,
       navContentHeight
     });
+  },
+  goPersonalCenter() {
+    wx.navigateTo({ url: '/pages/personal-center/personal-center' })
   }
 })
