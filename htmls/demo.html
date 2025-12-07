@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=375, user-scalable=no">
+    <title>首页</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F5F5F5;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            position: relative;
+            width: 375px;
+            height: 812px;
+            background-color: #F5F5F5;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        /* General Styles */
+        .card-bg {
+            background-color: #FFFFFF;
+            border-radius: 10px;
+        }
+        
+        /* 顶部 Banner (Top Banner) Y=0 */
+        .section-top-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 375px;
+            height: 230px;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .banner-img {
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 379px;
+            height: 243px;
+            object-fit: cover;
+        }
+
+        .banner-fade {
+            position: absolute;
+            top: 194px;
+            left: 0;
+            width: 375px;
+            height: 36px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 100%);
+        }
+
+        /* Status Bar & Nav Bar */
+        .status-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 375px;
+            height: 44px;
+            z-index: 20;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px 0 30px; /* Adjust padding to match design */
+            box-sizing: border-box;
+        }
+
+        .status-time {
+            font-family: "SF Pro Text", "Inter", sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        .status-icons {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .nav-bar {
+            position: absolute;
+            top: 44px;
+            left: 0;
+            width: 375px;
+            height: 44px;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center title */
+        }
+
+        .nav-back {
+            position: absolute;
+            left: 12px;
+            top: 4px; /* Relative to nav-bar top */
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .nav-title {
+            font-family: "Inter", sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: #000000;
+        }
+
+        .nav-capsule {
+            position: absolute;
+            right: 7px; /* 375 - 281 - 87 = 7px from right */
+            top: 4px;
+            width: 87px;
+            height: 32px;
+            border-radius: 16px;
+            border: 0.5px solid rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        
+        .capsule-divider {
+            width: 1px;
+            height: 18px;
+            background-color: rgba(0,0,0,0.2);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* AI 入口 (AI Entry) Y=162 (Estimated) */
+        .section-ai-entry {
+            position: absolute;
+            top: 162px;
+            left: 10px;
+            width: 355px;
+            height: 104px;
+            /* overflow: visible to allow mascot to pop out */
+            z-index: 10;
+        }
+
+        .ai-bg {
+            position: absolute;
+            top: 38px;
+            left: 0;
+            width: 355px;
+            height: 66px;
+            background: linear-gradient(270deg, #FF80FF 0%, #0303B8 48%);
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        .ai-mascot {
+            position: absolute;
+            top: 1px;
+            left: 13px;
+            width: 69px;
+            height: 197px;
+            background-image: url('https://image-resource.mastergo.com/47498739156491/101475385229662/ae773c8eb9a4ea70dd6a743e934966c9.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 2;
+        }
+
+        .ai-text {
+            position: absolute;
+            top: 54px;
+            left: 94px;
+            width: 180px;
+            height: 36px;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .ai-text span:first-child {
+            font-family: "Inter", sans-serif;
+            font-size: 15px;
+            font-weight: 300; /* Light */
+            color: #FFFFFF;
+            line-height: 18px;
+        }
+        
+        .ai-text span:last-child {
+            font-family: "Inter", sans-serif;
+            font-size: 15px;
+            font-weight: 600; /* SemiBold */
+            color: #FFFFFF;
+            line-height: 18px;
+        }
+
+        .ai-btn {
+            position: absolute;
+            top: 45px;
+            left: 290px;
+            width: 52px;
+            height: 52px;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .ai-btn-icon {
+            width: 33px;
+            height: 20px;
+            margin-bottom: 4px;
+        }
+        
+        .ai-btn-text {
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            color: #FFFFFF;
+            line-height: 18px;
+        }
+
+        /* 2大菜单 (Big Menus) Y=286 */
+        .section-big-menus {
+            position: absolute;
+            top: 286px;
+            left: 10px;
+            width: 355px;
+            height: 100px;
+            /* background-color: #FFFFFF; implied by children */
+            border-radius: 10px;
+            background-color: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .big-menu-item {
+            width: 178px; /* Approx half */
+            height: 88px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .big-menu-icon-bg {
+            width: 52px;
+            height: 52px;
+            background-color: #FAFAFA;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .big-menu-text {
+            font-size: 16px;
+            color: #000000;
+            font-weight: 500;
+            font-family: "Inter", sans-serif;
+        }
+
+        /* 4个菜单 (4 Menus) Y=394 */
+        .section-four-menus {
+            position: absolute;
+            top: 394px;
+            left: 10px;
+            width: 355px;
+            height: 80px;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .menu-item {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .menu-icon-bg {
+            width: 42px;
+            height: 42px;
+            background-color: #FAFAFA;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        
+        .menu-text {
+            font-size: 12px;
+            color: #3D3D3D;
+            font-weight: 500;
+        }
+
+        /* 探索更多 (Explore More) Y=Below Menus */
+        .section-explore {
+            position: absolute;
+            top: 480px; /* Adjusted based on previous content height */
+            left: 10px;
+            width: 355px;
+            height: 220px; /* Reduced from 320px in DSL to fit content tightly, or keep 320 if padding needed */
+            /* DSL says height 320, but content ends at y=210 (128+82). Let's use auto or sufficient height */
+        }
+
+        .explore-title {
+            position: absolute;
+            top: 14px;
+            left: 10px;
+            font-family: "Inter", sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 15px;
+            color: #000000;
+        }
+
+        /* Card Common Styles */
+        .explore-card {
+            position: absolute;
+            width: 165px;
+            height: 82px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .explore-card-text {
+            position: absolute;
+            left: 10px;
+            top: 54px; /* Based on DSL relativeY */
+            font-family: "Inter", sans-serif;
+            font-size: 16px;
+            font-weight: 600; /* SemiBold */
+            line-height: 18px;
+            color: #FFFFFF;
+            z-index: 2;
+        }
+
+        /* Card 1: 关于GEA */
+        .card-about {
+            top: 41px;
+            left: 10px;
+            background-color: #0303B8;
+        }
+        .card-about-img {
+            position: absolute;
+            width: 169px;
+            height: 169px;
+            top: -29px;
+            left: 4px;
+            object-fit: cover;
+        }
+
+        /* Card 2: 可持续发展 */
+        .card-sustainability {
+            top: 41px;
+            left: 180px;
+            /* Background image set inline or via class */
+        }
+        .card-sustain-bg {
+            position: absolute;
+            width: 295px;
+            height: 197px;
+            top: -57px;
+            left: -58px;
+            object-fit: cover;
+        }
+
+        /* Card 3: 企业文化 */
+        .card-culture {
+            top: 128px;
+            left: 10px;
+        }
+        .card-culture-bg {
+            position: absolute;
+            width: 229px;
+            height: 128px;
+            top: -36px;
+            left: -39px;
+            object-fit: cover;
+        }
+        .card-culture-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 47%, #000000 100%);
+            z-index: 1;
+        }
+
+        /* Card 4: 服务中心 */
+        .card-service {
+            top: 128px;
+            left: 180px;
+            background-color: #0303B8;
+        }
+        .card-service-icon {
+            position: absolute;
+            top: 53px;
+            left: 79px;
+            width: 80px;
+            height: 19px;
+        }
+
+        /* 底部菜单 (Bottom Menu) Y=Bottom */
+        .section-bottom-menu {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 375px;
+            height: 120px;
+            z-index: 100;
+        }
+
+        .bottom-bg {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 375px;
+            height: 90px;
+            background-color: #FFFFFF;
+            box-shadow: 0 -1px 0 #E9E9E9; /* Top border approx */
+        }
+
+        .tab-item {
+            position: absolute;
+            width: 56px;
+            height: 52px; /* Includes icon + text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .tab-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 6px;
+        }
+        
+        .tab-text {
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 14px;
+            text-align: center;
+        }
+
+        /* Tab 1: 首页 */
+        .tab-1 { left: 24px; top: 30px; }
+        .tab-1 .tab-text { color: #000000; }
+
+        /* Tab 2: 学院 */
+        .tab-2 { left: 92px; top: 30px; }
+        .tab-2 .tab-text { color: #7F7F7F; }
+
+        /* Tab 3: AI对话 (Center) */
+        .tab-3-wrapper {
+            position: absolute;
+            left: 158px;
+            top: 0; /* Extends above bg */
+            width: 57px;
+            height: 82px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .tab-3-mascot {
+            width: 57px;
+            height: 67px;
+            position: relative;
+            /* overflow: hidden;  Mascot protrudes */
+        }
+        
+        .tab-3-mascot-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 57px;
+            height: 57px;
+            border-radius: 50%;
+            background: linear-gradient(180deg, #0303B8 37%, #FF80FF 100%);
+        }
+        
+        .tab-3-mascot-img {
+            position: absolute;
+            top: 3px;
+            left: 5px;
+            width: 50px;
+            height: 142px; /* Clipped visually by container height if needed, but DSL says full size */
+            object-fit: cover;
+            /* Adjust object position/clip based on design intent. 
+               Here we clip it to the container or let it float. 
+               Given height 67px container, let's clip bottom. */
+            clip-path: inset(0 0 78px 0); /* 142 - (67-3) = 78 approx */
+        }
+
+        .tab-3-text {
+            margin-top: 1px;
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 14px;
+            color: #0303B8;
+        }
+
+        /* Tab 4: 联系 */
+        .tab-4 { left: 227px; top: 30px; }
+        .tab-4 .tab-text { color: #7F7F7F; }
+
+        /* Tab 5: 我的 */
+        .tab-5 { left: 295px; top: 30px; }
+        .tab-5 .tab-text { color: #7F7F7F; }
+
+        .home-indicator {
+            position: absolute;
+            bottom: 8px;
+            left: 120.5px;
+            width: 134px;
+            height: 5px;
+            background-color: #000000;
+            border-radius: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部 Banner & 导航栏 -->
+        <div class="section-top-banner">
+            <img src="https://image-resource.mastergo.com/47498739156491/101475385229662/33a99e3d2800e31c0d02fd63e166d4f3.png" alt="Banner" class="banner-img">
+            <div class="banner-fade"></div>
+
+            <!-- Status Bar -->
+            <div class="status-bar">
+                <div class="status-time">9:41</div>
+                <div class="status-icons">
+                    <!-- Signal -->
+                    <svg width="17" height="11" viewBox="0 0 17 11" fill="none">
+                        <path d="M1 10.5C0.45 10.5 0 10.05 0 9.5V7.5C0 6.95 0.45 6.5 1 6.5H2C2.55 6.5 3 6.95 3 7.5V9.5C3 10.05 2.55 10.5 2 10.5H1ZM5.75 10.5C5.2 10.5 4.75 10.05 4.75 9.5V5.5C4.75 4.95 5.2 4.5 5.75 4.5H6.75C7.3 4.5 7.75 4.95 7.75 5.5V9.5C7.75 10.05 7.3 10.5 6.75 10.5H5.75ZM10.5 10.5C9.95 10.5 9.5 10.05 9.5 9.5V3.5C9.5 2.95 9.95 2.5 10.5 2.5H11.5C12.05 2.5 12.5 2.95 12.5 3.5V9.5C12.5 10.05 12.05 10.5 11.5 10.5H10.5ZM15.25 10.5C14.7 10.5 14.25 10.05 14.25 9.5V1.5C14.25 0.95 14.7 0.5 15.25 0.5H16.25C16.8 0.5 17.25 0.95 17.25 1.5V9.5C17.25 10.05 16.8 10.5 16.25 10.5H15.25Z" fill="#000000"/>
+                    </svg>
+                    <!-- Battery -->
+                    <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+                        <path d="M23 4C23.55 4 24 4.45 24 5V7C24 7.55 23.55 8 23 8V4ZM1 10.5C0.45 10.5 0 10.05 0 9.5V2.5C0 1.95 0.45 1.5 1 1.5H20C20.55 1.5 21 1.95 21 2.5V9.5C21 10.05 20.55 10.5 20 10.5H1Z" stroke="#000000" stroke-opacity="0.4" stroke-width="1"/>
+                        <rect x="2" y="3.5" width="17" height="5" rx="1" fill="#000000"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Navigation Bar -->
+            <div class="nav-bar">
+                <div class="nav-back">
+                    <svg width="9" height="17" viewBox="0 0 9 17" fill="none">
+                        <path d="M7.76257 0.146446C7.95783 -0.0488155 8.27441 -0.0488155 8.46967 0.146446C8.82323 0.5 8.82323 0.5 8.82323 0.5C9.01849 0.695262 9.01849 1.01184 8.82323 1.2071L1.70711 8.32322C1.70711 8.32322 8.82323 15.4393 8.82323 15.4393C9.01849 15.6346 9.01849 15.9512 8.82323 16.1465C8.46967 16.5 8.46967 16.5 8.46967 16.5C8.27441 16.6953 7.95783 16.6953 7.76257 16.5L0.292894 9.03033C-0.0976311 8.6398 -0.0976311 8.00664 0.292893 7.61611L7.76257 0.146446Z" fill="#000000"/>
+                    </svg>
+                </div>
+                <div class="nav-title">GEA中国</div>
+                <div class="nav-capsule">
+                    <!-- More/Share Icon -->
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                         <circle cx="10" cy="10" r="1.5" fill="#000000"/>
+                         <circle cx="3.5" cy="10" r="1.5" fill="#000000"/>
+                         <circle cx="16.5" cy="10" r="1.5" fill="#000000"/>
+                    </svg>
+                    <div class="capsule-divider"></div>
+                    <!-- Close/Home Icon -->
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="7" stroke="#000000" stroke-width="1.5"/>
+                        <circle cx="10" cy="10" r="2.5" fill="#000000"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI 入口 -->
+        <div class="section-ai-entry">
+            <div class="ai-bg"></div>
+            <div class="ai-mascot"></div>
+            <div class="ai-text">
+                <span>Hi！我是GEA智能数字员工</span>
+                <span>有问题？请问我！</span>
+            </div>
+            <div class="ai-btn">
+                <div class="ai-btn-icon">
+                    <svg width="33" height="20" viewBox="0 0 33 20" fill="none">
+                        <path d="M0 9.06832L19.0804 9.06832L19.0804 10.8075L0 10.8075L0 9.06832ZM27.6729 5.96273L32.7273 8.44721L32.7273 11.3043L15.6687 19.8758L14.7841 18.2609L30.9582 10.1863L30.9582 9.56522L26.9147 7.57764L27.6729 5.96273ZM15.6687 0L24.3875 4.34783L23.6293 5.96273L14.9105 1.61491L15.6687 0Z" fill="#FFFFFF"/>
+                    </svg>
+                </div>
+                <div class="ai-btn-text">开启对话</div>
+            </div>
+        </div>
+
+        <!-- 2大菜单 -->
+        <div class="section-big-menus">
+            <div class="big-menu-item">
+                <div class="big-menu-icon-bg">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                        <path d="M30 26.9792L30 8.95833L28.4375 8.95833L28.4375 7.5L26.9792 7.5L26.9792 8.95833L3.02083 8.95833L3.02083 1.45833L26.9792 1.45833L26.9792 4.375L28.4375 4.375L28.4375 0L1.45833 0L1.45833 8.95833L0 8.95833L0 26.875L3.75 26.875L3.75 28.3333L2.5 28.3333L2.5 29.7917L6.5625 29.7917L6.5625 28.3333L5.3125 28.3333L5.3125 26.875L14.4792 26.875L14.4792 28.3333L13.2292 28.3333L13.2292 29.7917L17.2917 29.7917L17.2917 28.3333L16.0417 28.3333L16.0417 26.875L24.7917 26.875L24.7917 28.3333L23.4375 28.3333L23.4375 29.7917L27.5 29.7917L27.5 28.3333L26.25 28.3333L26.25 26.875L30 26.875L30 26.9792ZM1.45833 10.5208L28.4375 10.5208L28.4375 25.5208L1.45833 25.5208L1.45833 10.5208Z" fill="#0303B8"/>
+                        <path d="M0 6.77083L8.22917 6.77083L8.22917 0L0 0L0 6.77083ZM1.45834 1.5625L6.66667 1.5625L6.66667 5.3125L1.45834 5.3125L1.45834 1.5625Z" fill="#0303B8" transform="translate(18.02 12.71)"/>
+                        <path d="M0 0L3.75 0L3.75 1.45833L0 1.45833L0 0Z" fill="#0303B8" transform="translate(3.75 21.77)"/>
+                        <path d="M0 0L3.75 0L3.75 1.45833L0 1.45833L0 0Z" fill="#0303B8" transform="translate(8.96 21.77)"/>
+                        <path d="M0 0L3.75 0L3.75 1.45833L0 1.45833L0 0Z" fill="#0303B8" transform="translate(14.27 21.77)"/>
+                    </svg>
+                </div>
+                <div class="big-menu-text">解决方案</div>
+            </div>
+            
+            <div style="width: 1px; height: 50px; background-color: #EEEEEE;"></div> <!-- Divider approximation -->
+
+            <div class="big-menu-item">
+                <div class="big-menu-icon-bg">
+                     <svg width="35" height="30" viewBox="0 0 35 30" fill="none">
+                        <path d="M0 0L11.3483 0L11.3483 1.68539L0 1.68539L0 0Z" fill="#0303B8" transform="translate(9.1 4.83)"/>
+                        <path d="M9.10112 21.0112L9.10112 25.8427L25.0562 25.8427L34.2697 29.8876L30.1124 21.4607L30.1124 9.66292L25.2809 9.66292L25.2809 0L4.26966 0L4.26966 11.9101L0 19.4382L9.10112 15.7303L9.10112 17.7528L10.6742 17.7528L10.6742 14.6067L10.6742 11.3483L28.427 11.3483L28.427 21.7978C28.427 21.9101 28.427 22.0225 28.5393 22.1348L30.7865 26.6292L25.5056 24.2697C25.3933 24.2697 25.2809 24.1573 25.1685 24.1573L10.5618 24.1573L10.5618 20.8989L9.10112 20.8989L9.10112 21.0112ZM9.10112 9.66292L9.10112 13.9326L3.70786 16.0674L5.8427 12.3595C5.95506 12.2472 5.95506 12.1348 5.95506 11.9101L5.95506 1.57303L23.7079 1.57303L23.7079 9.66292L9.10112 9.66292Z" fill="#0303B8"/>
+                        <path d="M0 0L11.3483 0L11.3483 1.57303L0 1.57303L0 0Z" fill="#0303B8" transform="translate(13.93 14.61)"/>
+                        <path d="M0 0L11.3483 0L11.3483 1.57303L0 1.57303L0 0Z" fill="#0303B8" transform="translate(13.93 19.44)"/>
+                    </svg>
+                </div>
+                <div class="big-menu-text">GEA动态</div>
+            </div>
+        </div>
+
+        <!-- 4个菜单 -->
+        <div class="section-four-menus">
+            <div class="menu-item">
+                <div class="menu-icon-bg">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M20 19.2708L13.2292 12.6042C14.4792 11.25 15.2083 9.47917 15.2083 7.5C15.2083 6.45833 15 5.52083 14.6875 4.58333L13.6458 5C13.9583 5.83333 14.1667 6.66667 14.1667 7.5C14.1667 11.0417 11.25 13.9583 7.70833 13.9583C4.16667 13.9583 1.04167 11.1458 1.04167 7.60417C1.04167 3.95833 3.95833 1.04167 7.60417 1.04167C9.47917 1.04167 11.25 1.875 12.5 3.22917L13.3333 2.5C11.875 0.9375 9.79167 0 7.60417 0C3.4375 0 0 3.4375 0 7.60417C0 11.7708 3.4375 15.2083 7.60417 15.2083C9.47917 15.2083 11.1458 14.5833 12.3958 13.4375L19.1667 20.1042L20 19.2708Z" fill="#0303B8"/>
+                    </svg>
+                </div>
+                <div class="menu-text">产品速查</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-icon-bg">
+                    <svg width="23" height="19" viewBox="0 0 23 19" fill="none">
+                        <path d="M22.4 15.1L22.4 3.1L9.1 3.1L7.2 0L0 0L0 18.9L22.4 18.9L22.4 17.6L1.2 17.6L1.2 1.3L6.5 1.3L8.4 4.4L11.2 4.4L11.2 12.4L14.9 10.1L18.6 12.4L18.6 4.4L21.1 4.4L21.1 15.1L22.4 15.1ZM17.5 10.2L15 8.7L12.5 10.2L12.5 4.4L17.5 4.4L17.5 10.2Z" fill="#0303B8"/>
+                    </svg>
+                </div>
+                <div class="menu-text">客户故事</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-icon-bg">
+                    <svg width="21" height="18" viewBox="0 0 21 18" fill="none">
+                        <path d="M20.6 1L19.6 0L16.2 3.4L16.2 1.1L0 1.1L0 12.9L1.5 12.9L1.5 2.5L14.7 2.5L14.7 4.9L7.9 11.8L4.9 8.8L3.9 9.9L7.9 13.8L14.7 6.9L14.7 15.8L0 15.8L0 17.2L16.2 17.2L16.2 5.5L20.6 1Z" fill="#0303B8"/>
+                    </svg>
+                </div>
+                <div class="menu-text">签到中心</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-icon-bg">
+                    <svg width="23" height="20" viewBox="0 0 23 20" fill="none">
+                        <path d="M15.7 16.6C15.3 16.6 14.9 17 14.9 17.4C14.9 17.8 15.3 18.2 15.7 18.2C16.1 18.2 16.5 17.8 16.5 17.4C16.5 17 16.1 16.6 15.7 16.6ZM8.7 16.6C8.3 16.6 7.9 17 7.9 17.4C7.9 17.8 8.3 18.2 8.7 18.2C9.1 18.2 9.5 17.8 9.5 17.4C9.5 17 9.2 16.6 8.7 16.6ZM15.7 15.5C16.8 15.5 17.6 16.4 17.6 17.4C17.6 18.5 16.7 19.3 15.7 19.3C14.7 19.3 13.8 18.4 13.8 17.4C13.8 16.3 14.6 15.5 15.7 15.5ZM8.7 15.5C9.8 15.5 10.6 16.4 10.6 17.4C10.6 18.5 9.7 19.3 8.7 19.3C7.6 19.3 6.8 18.4 6.8 17.4C6.8 16.3 7.6 15.5 8.7 15.5ZM13.6 9L12 13.2L17.5 13.2L19.1 9L13.6 9ZM15.4 3.9L14 7.8L19.5 7.8L21 3.9L15.4 3.9ZM0 0L3.5 0L6.8 13.2L10.9 13.2L12.4 9L8.5 9L8.5 7.8L12.7 7.8L14.1 3.9L6.8 3.9L6.8 2.8L22.5 2.8L18.2 14.4L5.9 14.4L2.6 1.1L0 1.1L0 0Z" fill="#0303B8"/>
+                    </svg>
+                </div>
+                <div class="menu-text">我要采购</div>
+            </div>
+        </div>
+
+        <!-- 探索更多 -->
+        <div class="section-explore">
+            <div class="explore-title">探索更多</div>
+            
+            <!-- Card 1: 关于GEA -->
+            <div class="explore-card card-about">
+                <img src="https://image-resource.mastergo.com/47498739156491/101475385229662/68a09cc1dbec362f375dc038ea613f9e.png" alt="Globe" class="card-about-img">
+                <div class="explore-card-text">关于GEA</div>
+            </div>
+
+            <!-- Card 2: 可持续发展 -->
+            <div class="explore-card card-sustainability">
+                <img src="https://image-resource.mastergo.com/47498739156491/101475385229662/f9d7cbc20fac8d2684a14e1a106cd6fb.jpg" alt="Sustainability" class="card-sustain-bg">
+                <div class="explore-card-text">可持续发展</div>
+            </div>
+
+            <!-- Card 3: 企业文化 -->
+            <div class="explore-card card-culture">
+                <img src="https://image-resource.mastergo.com/47498739156491/101475385229662/d3d84d118e0bcd01d91f37d8fcd08284.png" alt="Culture" class="card-culture-bg">
+                <div class="card-culture-overlay"></div>
+                <div class="explore-card-text">企业文化</div>
+            </div>
+
+            <!-- Card 4: 服务中心 -->
+            <div class="explore-card card-service">
+                <div class="explore-card-text">服务中心</div>
+                <!-- Complex SVG Icon for Service -->
+                <div class="card-service-icon">
+                    <svg width="80" height="19" viewBox="0 0 80 19" fill="none">
+                        <g transform="translate(0, 4.18)">
+                            <path transform="translate(0, 0.21)" fill="#FFFFFF" d="M4.74744 2.21187C4.70528 1.84189 4.53119 1.55501 4.2238 1.35058C3.91846 1.14615 3.53219 1.04293 3.06772 1.04293C2.56856 1.04293 2.17209 1.15554 1.87898 1.37941C1.5852 1.60327 1.43831 1.88546 1.43831 2.22729C1.43831 2.48199 1.5172 2.68977 1.67429 2.84997C1.83138 3.01016 2.0252 3.13617 2.25369 3.22666C2.48219 3.31714 2.70185 3.39087 2.91334 3.44516L3.70628 3.64892C3.96538 3.71126 4.22993 3.79638 4.50263 3.90429C4.77465 4.01288 5.02695 4.15296 5.25952 4.32656C5.4921 4.50016 5.6798 4.71531 5.82397 4.97337C5.96814 5.23075 6.03954 5.53974 6.03954 5.899C6.03954 6.34942 5.92121 6.75158 5.68524 7.10615C5.44926 7.46072 5.10719 7.73754 4.66108 7.93996C4.21428 8.14171 3.67296 8.24225 3.03575 8.24225C2.1272 8.24225 1.40431 8.03312 0.866387 7.61354C0.328465 7.19395 0.0401231 6.62289 0 5.89833L1.22885 5.89833C1.26626 6.33266 1.45735 6.65573 1.8035 6.86686C2.15033 7.07733 2.55768 7.18323 3.02827 7.18323C3.54919 7.18323 3.97831 7.06459 4.31833 6.82799C4.65768 6.59071 4.82701 6.2777 4.82701 5.88694C4.82701 5.64966 4.75901 5.45462 4.623 5.30314C4.48698 5.15031 4.30337 5.02565 4.07215 4.92779C3.84093 4.82993 3.5798 4.74413 3.28941 4.66772L2.33054 4.40967C1.67769 4.2354 1.16289 3.97869 0.78546 3.64088C0.408031 3.30306 0.217617 2.85466 0.217617 2.297C0.217617 1.83653 0.344786 1.4337 0.598446 1.08985C0.852105 0.746005 1.19621 0.478569 1.63145 0.287544C2.066 0.095848 2.5536 0 3.0956 0C3.64508 0 4.12996 0.0951778 4.55227 0.285533C4.97322 0.475218 5.30509 0.737291 5.54855 1.07041C5.79133 1.40354 5.91849 1.78358 5.92938 2.2112L4.74744 2.21187L4.74744 2.21187Z"/>
+                            <path transform="translate(7.02, 2.24)" fill="#FFFFFF" d="M2.89702 6.19861C2.29994 6.19861 1.78446 6.07126 1.35194 5.81589C0.918071 5.56119 0.584845 5.2026 0.350907 4.74011C0.116969 4.2783 0 3.7374 0 3.1174C0 2.50277 0.116969 1.9612 0.350907 1.49268C0.584845 1.02416 0.91195 0.658201 1.33358 0.394786C1.75453 0.131372 2.24825 0 2.81338 0C3.27377 0 3.70832 0.10054 4.11976 0.30296C4.53051 0.504709 4.86509 0.825766 5.12215 1.26747C5.37989 1.70851 5.50842 2.29097 5.50842 3.01485L5.50842 3.42841L1.18125 3.42841C1.19689 4.00684 1.36214 4.4519 1.67701 4.76424C1.99119 5.07726 2.40194 5.23276 2.90926 5.23276C3.24725 5.23276 3.53899 5.16171 3.78449 5.01827C4.02999 4.87484 4.20612 4.66169 4.31153 4.3775L5.43294 4.57724C5.29829 5.06452 5.00722 5.45596 4.56111 5.75289C4.115 6.04981 3.55939 6.19861 2.89702 6.19861ZM1.18465 2.55438L4.34689 2.55438C4.34417 2.09592 4.20408 1.71655 3.92662 1.4156C3.64984 1.11532 3.28125 0.964509 2.82086 0.964509C2.50123 0.964509 2.22173 1.03824 1.98303 1.18503C1.74365 1.33249 1.55528 1.52619 1.41655 1.76682C1.27782 2.00811 1.20097 2.27086 1.18465 2.55438Z"/>
+                            <path transform="translate(13.68, 2.23)" fill="#FFFFFF" d="M0 6.08936L0 0.0904859L1.14589 0.0904859L1.14589 1.0436L1.20913 1.0436C1.32066 0.720535 1.51652 0.465835 1.79806 0.2795C2.07892 0.0938367 2.39854 0 2.75489 0C2.83106 0 2.91946 0.00268087 3.02011 0.00804324C3.12076 0.0134056 3.20032 0.0201078 3.25881 0.0274811L3.25881 1.14481C3.21121 1.13141 3.12756 1.11666 3.00719 1.0999C2.88682 1.08315 2.76509 1.07443 2.64064 1.07443C2.22037 1.07443 1.87286 1.20111 1.59812 1.45515C1.32338 1.70917 1.18669 2.03224 1.18669 2.42569L1.18669 6.08936L0 6.08936Z"/>
+                            <path transform="translate(17.74, 2.32)" fill="#FFFFFF" d="M5.6866 6.39214e-07L3.47983 5.99887L2.21153 5.99887L0 6.39214e-07L1.27238 6.39214e-07L2.81406 4.61679L2.87798 4.61679L4.41558 0L5.6866 6.39214e-07Z"/>
+                            <path transform="translate(24.22, 0)" fill="#FFFFFF" d="M0.748059 1.39415C0.542002 1.39415 0.36587 1.32578 0.219658 1.18905C0.0727671 1.05232 0 0.889442 0 0.699086C0 0.50672 0.0727645 0.341835 0.219658 0.205101C0.366549 0.0683672 0.542682 0 0.748059 0C0.952074 0 1.12753 0.0683672 1.2751 0.205101C1.42335 0.341835 1.4968 0.50672 1.4968 0.699086C1.4968 0.889441 1.42335 1.05232 1.2751 1.18905C1.12753 1.32645 0.952074 1.39415 0.748059 1.39415ZM0.150292 8.31933L0.150292 2.32046L1.33562 2.32046L1.33562 8.31933L0.150292 8.31933Z"/>
+                            <path transform="translate(26.6, 2.24)" fill="#FFFFFF" d="M2.83718 6.19928C2.24825 6.19928 1.74161 6.06724 1.31794 5.80315C0.893588 5.5384 0.567843 5.17378 0.340706 4.70727C0.113569 4.24144 0 3.70724 0 3.10534C0 2.49338 0.11629 1.95449 0.348867 1.48866C0.581444 1.02282 0.909231 0.6582 1.33358 0.394786C1.75726 0.131372 2.25437 0 2.82494 0C3.28737 0 3.69949 0.0837831 4.06127 0.25202C4.42306 0.420257 4.71617 0.65552 4.93922 0.957139C5.16228 1.25943 5.29489 1.61266 5.33773 2.01549L4.18436 2.01549C4.12112 1.73465 3.97627 1.49268 3.75049 1.28892C3.52471 1.08583 3.22277 0.98462 2.84466 0.98462C2.35026 0.98462 1.95243 1.17229 1.64981 1.54898C1.34719 1.92567 1.19621 2.43507 1.19621 3.07786C1.19621 3.73204 1.34583 4.25082 1.64369 4.63421C1.94223 5.01827 2.3421 5.21064 2.84466 5.21064C3.18265 5.21064 3.47235 5.11881 3.71241 4.93717C3.95315 4.75486 4.11024 4.50217 4.18368 4.1791L5.33705 4.1791C5.29489 4.56719 5.16636 4.91371 4.95282 5.21801C4.73929 5.52298 4.45298 5.76227 4.0946 5.93654C3.73757 6.11215 3.31798 6.19928 2.83718 6.19928Z"/>
+                            <path transform="translate(32.93, 2.24)" fill="#FFFFFF" d="M2.89702 6.19861C2.29994 6.19861 1.78445 6.07126 1.35194 5.81589C0.91807 5.56119 0.584845 5.2026 0.350906 4.74011C0.116967 4.2783 0 3.7374 0 3.1174C0 2.50277 0.11697 1.9612 0.350906 1.49268C0.584845 1.02416 0.91195 0.658201 1.33358 0.394786C1.75453 0.131372 2.24825 0 2.81337 0C3.27377 0 3.70832 0.10054 4.11976 0.30296C4.53051 0.504709 4.86509 0.825766 5.12215 1.26747C5.37989 1.70851 5.50842 2.29097 5.50842 3.01485L5.50842 3.42841L1.18125 3.42841C1.19689 4.00684 1.36214 4.4519 1.67701 4.76424C1.99119 5.07726 2.40194 5.23276 2.90926 5.23276C3.24725 5.23276 3.53899 5.16171 3.78449 5.01827C4.02999 4.87484 4.20612 4.66169 4.31153 4.3775L5.43294 4.57724C5.29829 5.06452 5.00722 5.45596 4.56111 5.75289C4.115 6.04981 3.56007 6.19861 2.89702 6.19861ZM1.18465 2.55438L4.34689 2.55438C4.34417 2.09592 4.20408 1.71655 3.92662 1.4156C3.64984 1.11532 3.28125 0.964509 2.82086 0.964509C2.50123 0.964509 2.22173 1.03824 1.98303 1.18503C1.74365 1.33249 1.55528 1.52619 1.41655 1.76682C1.27782 2.00744 1.20097 2.27086 1.18465 2.55438Z"/>
+                            <g transform="translate(39.76, 0)">
+                                <path transform="translate(0, 0)" fill="#FFFFFF" d="M9.63974 0L0 19L3.57436 19L13.2141 0L9.63974 0Z"/>
+                                <path transform="translate(9.01, 0)" fill="#FFFFFF" d="M9.63974 0L0 19L3.57367 19L13.2141 0L9.63974 0Z"/>
+                                <path transform="translate(18.02, 0)" fill="#FFFFFF" d="M9.63906 0L0 19L3.57368 19L13.2134 0L9.63906 0Z"/>
+                                <path transform="translate(27.02, 0)" fill="#FFFFFF" d="M9.63974 0L0 19L3.57436 19L13.2141 0L9.63974 0Z"/>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 底部菜单 -->
+        <div class="section-bottom-menu">
+            <div class="bottom-bg"></div>
+            
+            <!-- Tab 1: 首页 -->
+            <div class="tab-item tab-1">
+                <div class="tab-icon">
+                    <svg width="24" height="22" viewBox="0 0 24 22" fill="none">
+                        <path d="M23.6092 10.6053L12.9295 0.308892C12.3955 -0.102964 11.5946 -0.102964 11.1941 0.308892L0.38086 10.6053C-0.420118 11.2917 0.113867 12.5273 1.31534 12.5273L2.91729 12.5273L2.91729 20.7644C2.91729 21.4509 3.58477 22 4.25226 22L9.32512 22L9.32512 17.195C9.32512 16.0967 10.2596 15.1357 11.5946 15.1357L12.6625 15.1357C13.864 15.1357 14.932 16.0967 14.932 17.195L14.932 22L20.0048 22C20.8058 22 21.3398 21.4509 21.3398 20.7644L21.3398 12.5273L22.9418 12.5273C23.8762 12.5273 24.4102 11.2917 23.6092 10.6053Z" fill="#040000"/>
+                    </svg>
+                </div>
+                <div class="tab-text">首页</div>
+            </div>
+            
+            <!-- Tab 2: 学院 -->
+            <div class="tab-item tab-2">
+                <div class="tab-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 0C5.33333 0 0 5.33333 0 12C0 18.6667 5.33333 24 12 24C18.6667 24 24 18.6667 24 12C24 5.33333 18.6667 0 12 0ZM17.4667 13.3333L10.6667 17.8667C9.6 18.5333 8.26667 17.8667 8.26667 16.5333L8.26667 7.46667C8.26667 6.26667 9.6 5.46667 10.6667 6.13333L17.4667 10.6667C18.4 11.3333 18.4 12.6667 17.4667 13.3333Z" fill="#D9D9D9"/>
+                    </svg>
+                </div>
+                <div class="tab-text">学院</div>
+            </div>
+            
+            <!-- Tab 3: AI对话 (Center) -->
+            <div class="tab-3-wrapper">
+                <div class="tab-3-mascot">
+                    <div class="tab-3-mascot-bg"></div>
+                    <img src="https://image-resource.mastergo.com/47498739156491/101475385229662/ae773c8eb9a4ea70dd6a743e934966c9.png" alt="AI" class="tab-3-mascot-img">
+                </div>
+                <div class="tab-3-text">AI对话</div>
+            </div>
+            
+            <!-- Tab 4: 联系 -->
+            <div class="tab-item tab-4">
+                <div class="tab-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M20.5073 0L3.61893 0C1.60841 0 0 1.6 0 3.6L0 20.2667C0 22.4 1.60841 24 3.61893 24L20.3733 24C22.3838 24 23.9922 22.4 23.9922 20.4L23.9922 3.6C24.1262 1.6 22.5178 0 20.5073 0ZM19.9712 17.6C19.8371 17.7333 19.8371 18 19.569 18.1333C19.301 18.2667 19.1669 18.5333 18.8989 18.6667C18.6308 18.8 18.3627 18.9333 17.9606 19.0667C16.3522 19.6 14.7438 19.4667 13.1354 18.9333C11.527 18.4 9.91856 17.3333 8.57821 16C7.23787 14.6667 6.16559 13.0667 5.62945 11.3333C5.09331 9.86667 4.95928 8.13333 5.49542 6.66667C5.62945 6.26667 5.76349 6 5.89752 5.73333C6.03156 5.46667 6.29962 5.2 6.43366 5.06667C6.56769 4.8 6.70173 4.8 6.9698 4.66667C7.10383 4.66667 7.3719 4.53333 7.50594 4.53333C7.774 4.53333 7.90804 4.53333 8.04207 4.66667L8.44418 5.06667L10.8568 8C10.9908 8.13333 10.9908 8.26667 11.1249 8.4C11.1249 8.53333 11.1249 8.8 11.1249 8.93333C11.1249 9.06667 10.9908 9.33333 10.9908 9.46667C10.7228 9.73333 10.7228 9.86667 10.4547 9.86667L9.38242 10.6667C9.38242 10.8 9.24839 11.2 9.51645 11.6C10.0526 12.2667 10.4547 12.9333 11.1249 13.4667C11.661 14 12.3312 14.5333 13.0014 15.0667C13.4035 15.3333 13.8056 15.3333 13.9396 15.3333L15.1459 14C15.2799 13.6 15.548 13.6 15.682 13.6C15.8161 13.6 16.0841 13.6 16.2182 13.6C16.3522 13.6 16.4862 13.7333 16.6203 13.8667L19.435 16L19.569 16.1333C19.7031 16.2667 19.7031 16.2667 19.8371 16.5333L19.8371 16.6667C19.9712 16.9333 19.9712 17.0667 19.9712 17.2C20.1052 17.3333 20.1052 17.4667 19.9712 17.6Z" fill="#DADADA"/>
+                    </svg>
+                </div>
+                <div class="tab-text">联系</div>
+            </div>
+            
+            <!-- Tab 5: 我的 -->
+            <div class="tab-item tab-5">
+                <div class="tab-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 0C5.33333 0 0 5.33333 0 12C0 18.6667 5.33333 24 12 24C18.6667 24 24 18.6667 24 12C24 5.33333 18.6667 0 12 0ZM5.46667 18C5.46667 15.2 7.33333 12.8 10 12C8.66667 11.3333 7.73333 9.86667 7.73333 8.26667C7.73333 5.86667 9.6 4 12 4C14.4 4 16.2667 5.86667 16.2667 8.26667C16.2667 9.86667 15.3333 11.3333 14 12C16.5333 12.8 18.4 15.2 18.5333 18L5.46667 18Z" fill="#D9D9D9"/>
+                    </svg>
+                </div>
+                <div class="tab-text">我的</div>
+            </div>
+
+            <div class="home-indicator"></div>
+        </div>
+    </div>
+</body>
+</html>

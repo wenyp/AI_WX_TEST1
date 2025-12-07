@@ -1,0 +1,167 @@
+<view class="container">
+    <!-- 顶部 Banner & 导航栏 -->
+    <view class="section-top-banner">
+        <image src="./assets/ef32a0eb298c02fb322734a89de74b96.png" class="banner-img" mode="aspectFill"></image>
+        <view class="banner-fade"></view>
+
+        <!-- Status Bar -->
+        <!-- 小程序自带状态栏，移除模拟的时间、信号、电池 -->
+        <!-- <view class="status-bar">
+            <view class="status-time">9:41</view>
+            <view class="status-icons">
+                <image class="icon-signal" src="./assets/icon-signal.svg" mode="aspectFit"></image>
+                <image class="icon-battery" src="./assets/icon-battery.svg" mode="aspectFit"></image>
+            </view>
+        </view> -->
+
+        <!-- Navigation Bar -->
+        <view class="nav-bar" style="padding-top: {{statusBarHeight}}px; height: {{navContentHeight}}px;">
+            <view class="nav-back" style="height: {{menuButtonHeight}}px; width: {{menuButtonHeight}}px; margin-top: {{(navContentHeight - menuButtonHeight) / 2}}px;">
+                <image class="icon-back" src="./assets/icon-back.svg" mode="aspectFit"></image>
+            </view>
+            <view class="nav-title" style="line-height: {{navContentHeight}}px;">GEA中国</view>
+            <!-- 胶囊按钮由小程序原生提供，移除模拟的胶囊 -->
+            <!-- <view class="nav-capsule">
+                <image class="icon-more" src="./assets/icon-more.svg" mode="aspectFit"></image>
+                <view class="capsule-divider"></view>
+                <image class="icon-close" src="./assets/icon-close.svg" mode="aspectFit"></image>
+            </view> -->
+        </view>
+    </view>
+
+    <!-- AI 入口 -->
+    <view class="section-ai-entry">
+        <view class="ai-bg"></view>
+        <image class="ai-mascot" src="/pages/demo/assets/95c28a96892f7ccbd24508e4b4b87eaf.png" mode="aspectFit"></image>
+        <view class="ai-text">
+            <text>Hi！我是GEA智能数字员工</text>
+            <text>有问题？请问我！</text>
+        </view>
+        <view class="ai-btn">
+            <image class="ai-btn-icon" src="./assets/ai-btn-icon.svg" mode="aspectFit"></image>
+            <view class="ai-btn-text">开启对话</view>
+        </view>
+    </view>
+
+    <!-- 2大菜单 -->
+    <view class="section-big-menus">
+        <view class="big-menu-item">
+            <view class="big-menu-icon-bg">
+                <image class="icon-solution" src="./assets/icon-solution.svg" mode="aspectFit"></image>
+            </view>
+            <view class="big-menu-text">解决方案</view>
+        </view>
+        
+        <view style="width: 2rpx; height: 100rpx; background-color: #EEEEEE;"></view>
+
+        <view class="big-menu-item">
+            <view class="big-menu-icon-bg">
+                 <image class="icon-dynamic" src="./assets/icon-dynamic.svg" mode="aspectFit"></image>
+            </view>
+            <view class="big-menu-text">GEA动态</view>
+        </view>
+    </view>
+
+    <!-- 4个菜单 -->
+    <view class="section-four-menus">
+        <view class="menu-item">
+            <view class="menu-icon-bg">
+                <image class="icon-product" src="./assets/icon-product.svg" mode="aspectFit"></image>
+            </view>
+            <view class="menu-text">产品速查</view>
+        </view>
+        <view class="menu-item">
+            <view class="menu-icon-bg">
+                <image class="icon-customer" src="./assets/icon-customer.svg" mode="aspectFit"></image>
+            </view>
+            <view class="menu-text">客户故事</view>
+        </view>
+        <view class="menu-item">
+            <view class="menu-icon-bg">
+                <image class="icon-checkin" src="./assets/icon-checkin.svg" mode="aspectFit"></image>
+            </view>
+            <view class="menu-text">签到中心</view>
+        </view>
+        <view class="menu-item">
+            <view class="menu-icon-bg">
+                <image class="icon-buy" src="./assets/icon-buy.svg" mode="aspectFit"></image>
+            </view>
+            <view class="menu-text">我要采购</view>
+        </view>
+    </view>
+
+    <!-- 探索更多 -->
+    <view class="section-explore">
+        <view class="explore-title">探索更多</view>
+        
+        <!-- Card 1: 关于GEA -->
+        <view class="explore-card card-about">
+            <image src="./assets/615cc3ecdab610e34e2ca90154b3a648.png" class="card-about-img" mode="aspectFill"></image>
+            <view class="explore-card-text">关于GEA</view>
+        </view>
+
+        <!-- Card 2: 可持续发展 -->
+        <view class="explore-card card-sustainability">
+            <image src="./assets/91dd30cc98b69d4c468f170255297637.jpg" class="card-sustain-bg" mode="aspectFill"></image>
+            <view class="explore-card-text">可持续发展</view>
+        </view>
+
+        <!-- Card 3: 企业文化 -->
+        <view class="explore-card card-culture">
+            <image src="/pages/demo/assets/ac60a638a21f4adcdd6f26b191730d99.png" class="card-culture-bg" mode="aspectFill"></image>
+            <view class="card-culture-overlay"></view>
+            <view class="explore-card-text">企业文化</view>
+        </view>
+
+        <!-- Card 4: 服务中心 -->
+        <view class="explore-card card-service">
+            <view class="explore-card-text">服务中心</view>
+            <image class="card-service-icon" src="/pages/demo/assets/card-service-icon.svg" mode="aspectFit"></image>
+        </view>
+    </view>
+
+    <!-- 底部菜单 -->
+    <view class="section-bottom-menu">
+        <view class="bottom-bg"></view>
+        
+        <!-- Tab 1: 首页 -->
+        <view class="tab-item tab-1">
+            <image class="tab-icon icon-tab-home" src="./assets/icon-tab-home.svg" mode="aspectFit"></image>
+            <view class="tab-text">首页</view>
+        </view>
+        
+        <!-- Tab 2: 学院 -->
+        <view class="tab-item tab-2">
+            <image class="tab-icon icon-tab-college" src="./assets/icon-tab-college.svg" mode="aspectFit"></image>
+            <view class="tab-text">学院</view>
+        </view>
+        
+        <!-- Tab 3: AI对话 (Center) -->
+        <view class="tab-3-wrapper">
+            <view class="tab-3-mascot">
+                <view class="tab-3-mascot-bg">
+                    <!-- Lower Body: Clipped by circle container -->
+                    <image src="/pages/demo/assets/95c28a96892f7ccbd24508e4b4b87eaf.png" class="mascot-body" mode="aspectFill"></image>
+                </view>
+                <!-- Upper Head: Sticks out, bottom clipped to avoid overlap issues -->
+                <image src="/pages/demo/assets/95c28a96892f7ccbd24508e4b4b87eaf.png" class="mascot-head" mode="aspectFill"></image>
+            </view>
+            <view class="tab-3-text">AI对话</view>
+        </view>
+        
+        <!-- Tab 4: 联系 -->
+        <view class="tab-item tab-4">
+            <image class="tab-icon icon-tab-contact" src="./assets/icon-tab-contact.svg" mode="aspectFit"></image>
+            <view class="tab-text">联系</view>
+        </view>
+        
+        <!-- Tab 5: 我的 -->
+        <view class="tab-item tab-5">
+            <image class="tab-icon icon-tab-mine" src="./assets/icon-tab-mine.svg" mode="aspectFit"></image>
+            <view class="tab-text">我的</view>
+        </view>
+
+        <!-- 底部 Home Indicator 由系统提供，移除模拟的黑线 -->
+        <!-- <view class="home-indicator"></view> -->
+    </view>
+</view>

@@ -1,0 +1,629 @@
+
+        page {
+            margin: 0;
+            padding: 0;
+            background-color: #F5F5F5;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            position: relative;
+            width: 750.0rpx;
+            height: 1624.0rpx;
+            background-color: #F5F5F5;
+            overflow: hidden;
+            box-shadow: 0 0 40.0rpx rgba(0,0,0,0.1);
+        }
+        
+        /* General Styles */
+        .card-bg {
+            background-color: #FFFFFF;
+            border-radius: 20.0rpx;
+        }
+        
+        /* 顶部 Banner (Top Banner) Y=0 */
+        .section-top-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 750.0rpx;
+            height: 460.0rpx;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .banner-img {
+            position: absolute;
+            top: -2.0rpx;
+            left: 0;
+            width: 758.0rpx;
+            height: 486.0rpx;
+            object-fit: cover;
+        }
+
+        .banner-fade {
+            position: absolute;
+            top: 388.0rpx;
+            left: 0;
+            width: 750.0rpx;
+            height: 72.0rpx;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 100%);
+        }
+
+        /* Status Bar & Nav Bar */
+        .status-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 750.0rpx;
+            height: 88.0rpx;
+            z-index: 20;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40.0rpx 0 60.0rpx; /* Adjust padding to match design */
+            box-sizing: border-box;
+        }
+
+        .status-time {
+            font-family: "SF Pro Text", "Inter", sans-serif;
+            font-size: 30.0rpx;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        .status-icons {
+            display: flex;
+            gap: 10.0rpx;
+            align-items: center;
+        }
+
+        .nav-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 750.0rpx;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center title */
+            box-sizing: content-box; /* 确保 height 不包含 padding */
+        }
+
+        .nav-back {
+            position: absolute;
+            left: 24.0rpx;
+            /* top, width, height now controlled by inline styles */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .nav-title {
+            font-family: "Inter", sans-serif;
+            font-size: 32.0rpx;
+            font-weight: 500;
+            color: #000000;
+        }
+
+        .nav-capsule {
+            position: absolute;
+            right: 14.0rpx; /* 375 - 281 - 87 = 14.0rpx from right */
+            top: 8.0rpx;
+            width: 174.0rpx;
+            height: 64.0rpx;
+            border-radius: 32.0rpx;
+            border: 1.0rpx solid rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20.0rpx;
+            box-sizing: border-box;
+        }
+        
+        .capsule-divider {
+            width: 2.0rpx;
+            height: 36.0rpx;
+            background-color: rgba(0,0,0,0.2);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* AI 入口 (AI Entry) Y=162 (Estimated) */
+        .section-ai-entry {
+            position: absolute;
+            top: 324.0rpx;
+            left: 20.0rpx;
+            width: 710.0rpx;
+            height: 208.0rpx;
+            overflow: hidden; /* Hide mascot legs */
+            z-index: 10;
+        }
+
+        .ai-bg {
+            position: absolute;
+            top: 76.0rpx;
+            left: 0;
+            width: 710.0rpx;
+            height: 132.0rpx;
+            background: linear-gradient(270deg, #FF80FF 0%, #0303B8 48%);
+            border-radius: 20.0rpx;
+            z-index: 1;
+        }
+
+        .ai-mascot {
+            position: absolute;
+            top: 2.0rpx;
+            left: 26.0rpx;
+            width: 138.0rpx;
+            height: 394.0rpx;
+            z-index: 2;
+        }
+
+        .ai-text {
+            position: absolute;
+            top: 108.0rpx;
+            left: 188.0rpx;
+            width: 360.0rpx;
+            height: 72.0rpx;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .ai-text text:first-child {
+            font-family: "Inter", sans-serif;
+            font-size: 26.0rpx;
+            font-weight: 300; /* Light */
+            color: #FFFFFF;
+            line-height: 34.0rpx;
+        }
+        
+        .ai-text text:last-child {
+            font-family: "Inter", sans-serif;
+            font-size: 26.0rpx;
+            font-weight: 600; /* SemiBold */
+            color: #FFFFFF;
+            line-height: 34.0rpx;
+        }
+
+        .ai-btn {
+            position: absolute;
+            top: 90.0rpx;
+            left: 580.0rpx;
+            width: 104.0rpx;
+            height: 104.0rpx;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .ai-btn-icon {
+            width: 66.0rpx;
+            height: 40.0rpx;
+            margin-bottom: 8.0rpx;
+        }
+        
+        .ai-btn-text {
+            font-family: "Inter", sans-serif;
+            font-size: 20.0rpx;
+            font-weight: 500;
+            color: #FFFFFF;
+            line-height: 36.0rpx;
+        }
+
+        /* 2大菜单 (Big Menus) Y=286 */
+        .section-big-menus {
+            position: absolute;
+            top: 572.0rpx;
+            left: 20.0rpx;
+            width: 710.0rpx;
+            height: 200.0rpx;
+            /* background-color: #FFFFFF; implied by children */
+            border-radius: 20.0rpx;
+            background-color: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .big-menu-item {
+            width: 356.0rpx; /* Approx half */
+            height: 176.0rpx;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .big-menu-icon-bg {
+            width: 104.0rpx;
+            height: 104.0rpx;
+            background-color: #FAFAFA;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 16.0rpx;
+        }
+        
+        .big-menu-text {
+            font-size: 32.0rpx;
+            color: #000000;
+            font-weight: 500;
+            font-family: "Inter", sans-serif;
+        }
+
+        /* 4个菜单 (4 Menus) Y=394 */
+        .section-four-menus {
+            position: absolute;
+            top: 788.0rpx;
+            left: 20.0rpx;
+            width: 710.0rpx;
+            height: 160.0rpx;
+            background-color: #FFFFFF;
+            border-radius: 20.0rpx;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .menu-item {
+            width: 160.0rpx;
+            height: 160.0rpx;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .menu-icon-bg {
+            width: 84.0rpx;
+            height: 84.0rpx;
+            background-color: #FAFAFA;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12.0rpx;
+        }
+        
+        .menu-text {
+            font-size: 24.0rpx;
+            color: #3D3D3D;
+            font-weight: 500;
+        }
+
+        /* 探索更多 (Explore More) Y=Below Menus */
+        .section-explore {
+            position: absolute;
+            top: 960.0rpx; /* Adjusted based on previous content height */
+            left: 20.0rpx;
+            width: 710.0rpx;
+            height: 440.0rpx; /* Reduced from 640.0rpx in DSL to fit content tightly, or keep 320 if padding needed */
+            /* DSL says height 320, but content ends at y=210 (128+82). Let's use auto or sufficient height */
+        }
+
+        .explore-title {
+            position: absolute;
+            top: 28.0rpx;
+            left: 20.0rpx;
+            font-family: "Inter", sans-serif;
+            font-size: 32.0rpx;
+            font-weight: 500;
+            line-height: 30.0rpx;
+            color: #000000;
+        }
+
+        /* Card Common Styles */
+        .explore-card {
+            position: absolute;
+            width: 330.0rpx;
+            height: 164.0rpx;
+            border-radius: 16.0rpx;
+            overflow: hidden;
+        }
+
+        .explore-card-text {
+            position: absolute;
+            left: 20.0rpx;
+            top: 108.0rpx; /* Based on DSL relativeY */
+            font-family: "Inter", sans-serif;
+            font-size: 32.0rpx;
+            font-weight: 600; /* SemiBold */
+            line-height: 36.0rpx;
+            color: #FFFFFF;
+            z-index: 2;
+        }
+
+        /* Card 1: 关于GEA */
+        .card-about {
+            top: 82.0rpx;
+            left: 20.0rpx;
+            background-color: #0303B8;
+        }
+        .card-about-img {
+            position: absolute;
+            width: 338.0rpx;
+            height: 338.0rpx;
+            top: -58.0rpx;
+            left: 8.0rpx;
+            object-fit: cover;
+        }
+
+        /* Card 2: 可持续发展 */
+        .card-sustainability {
+            top: 82.0rpx;
+            left: 360.0rpx;
+            /* Background image set inline or via class */
+        }
+        .card-sustain-bg {
+            position: absolute;
+            width: 590.0rpx;
+            height: 394.0rpx;
+            top: -114.0rpx;
+            left: -116.0rpx;
+            object-fit: cover;
+        }
+
+        /* Card 3: 企业文化 */
+        .card-culture {
+            top: 256.0rpx;
+            left: 20.0rpx;
+        }
+        .card-culture-bg {
+            position: absolute;
+            width: 458.0rpx;
+            height: 256.0rpx;
+            top: -72.0rpx;
+            left: -78.0rpx;
+            object-fit: cover;
+        }
+        .card-culture-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 47%, #000000 100%);
+            z-index: 1;
+        }
+
+        /* Card 4: 服务中心 */
+        .card-service {
+            top: 256.0rpx;
+            left: 360.0rpx;
+            background-color: #0303B8;
+        }
+        .card-service-icon {
+            position: absolute;
+            top: 106.0rpx;
+            left: 158.0rpx;
+            width: 160.0rpx;
+            height: 38.0rpx;
+        }
+
+        /* 底部菜单 (Bottom Menu) Y=Bottom */
+        .section-bottom-menu {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 750.0rpx;
+            height: 240.0rpx;
+            z-index: 100;
+        }
+
+        .bottom-bg {
+            position: absolute;
+            top: 60.0rpx;
+            left: 0;
+            width: 750.0rpx;
+            height: 180.0rpx;
+            background-color: #FFFFFF;
+            box-shadow: 0 -2.0rpx 0 #E9E9E9; /* Top border approx */
+        }
+
+        .tab-item {
+            position: absolute;
+            width: 112.0rpx;
+            height: 104.0rpx; /* Includes icon + text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .tab-icon {
+            width: 48.0rpx;
+            height: 48.0rpx;
+            margin-bottom: 12.0rpx;
+        }
+        
+        .tab-text {
+            font-family: "Inter", sans-serif;
+            font-size: 20.0rpx;
+            font-weight: 500;
+            line-height: 28.0rpx;
+            text-align: center;
+        }
+
+        /* Tab 1: 首页 */
+        .tab-1 { left: 48.0rpx; top: 60.0rpx; }
+        .tab-1 .tab-text { color: #000000; }
+
+        /* Tab 2: 学院 */
+        .tab-2 { left: 184.0rpx; top: 60.0rpx; }
+        .tab-2 .tab-text { color: #7F7F7F; }
+
+        /* Tab 3: AI对话 (Center) */
+        .tab-3-wrapper {
+            position: absolute;
+            left: 316.0rpx;
+            top: 0; /* Extends above bg */
+            width: 114.0rpx;
+            height: 164.0rpx;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .tab-3-mascot {
+            width: 114.0rpx;
+            height: 134.0rpx;
+            position: relative;
+            /* overflow: hidden;  Mascot protrudes */
+        }
+        
+        .tab-3-mascot-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 114.0rpx;
+            height: 114.0rpx;
+            border-radius: 50%;
+            background: linear-gradient(180deg, #0303B8 37%, #FF80FF 100%);
+            overflow: hidden; /* Clip body to circle */
+        }
+        
+        .mascot-body {
+            position: absolute;
+            top: -14.0rpx; /* Align with head: 6rpx (head top) - 20rpx (bg top) */
+            left: 10.0rpx;
+            width: 100.0rpx;
+            height: 284.0rpx;
+            object-fit: cover;
+        }
+
+        .mascot-head {
+            position: absolute;
+            top: 6.0rpx;
+            left: 10.0rpx;
+            width: 100.0rpx;
+            height: 284.0rpx; 
+            object-fit: cover;
+            clip-path: inset(0 0 234.0rpx 0); /* Keep top 50rpx (Head only) */
+            z-index: 2; /* Ensure head is above bg */
+        }
+
+        .tab-3-text {
+            margin-top: 2.0rpx;
+            font-family: "Inter", sans-serif;
+            font-size: 20.0rpx;
+            font-weight: 500;
+            line-height: 28.0rpx;
+            color: #0303B8;
+        }
+
+        /* Tab 4: 联系 */
+        .tab-4 { left: 454.0rpx; top: 60.0rpx; }
+        .tab-4 .tab-text { color: #7F7F7F; }
+
+        /* Tab 5: 我的 */
+        .tab-5 { left: 590.0rpx; top: 60.0rpx; }
+        .tab-5 .tab-text { color: #7F7F7F; }
+
+        .home-indicator {
+            position: absolute;
+            bottom: 16.0rpx;
+            left: 241.0rpx;
+            width: 268.0rpx;
+            height: 10.0rpx;
+            background-color: #000000;
+            border-radius: 200.0rpx;
+        }
+
+    
+
+/* Icon Dimensions */
+
+.icon-signal {
+    width: 34rpx;
+    height: 22rpx;
+}
+
+.icon-battery {
+    width: 50rpx;
+    height: 24rpx;
+}
+
+.icon-back {
+    width: 18rpx;
+    height: 34rpx;
+}
+
+.icon-more {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.icon-close {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.ai-btn-icon {
+    width: 66rpx;
+    height: 40rpx;
+}
+
+.icon-solution {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.icon-dynamic {
+    width: 70rpx;
+    height: 60rpx;
+}
+
+.icon-product {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.icon-customer {
+    width: 46rpx;
+    height: 38rpx;
+}
+
+.icon-checkin {
+    width: 42rpx;
+    height: 36rpx;
+}
+
+.icon-buy {
+    width: 46rpx;
+    height: 40rpx;
+}
+
+.card-service-icon {
+    width: 160rpx;
+    height: 38rpx;
+}
+
+.icon-tab-home {
+    width: 48rpx;
+    height: 44rpx;
+}
+
+.icon-tab-college {
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.icon-tab-contact {
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.icon-tab-mine {
+    width: 48rpx;
+    height: 48rpx;
+}
