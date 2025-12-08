@@ -102,7 +102,7 @@
 
         <!-- Card 2: 可持续发展 -->
         <view class="explore-card card-sustainability">
-            <image src="./assets/91dd30cc98b69d4c468f170255297637.jpg" class="card-sustain-bg" mode="aspectFill"></image>
+            <image src="./assets/91dd30cc98b69d4c468f170255297637.png" class="card-sustain-bg" mode="aspectFill"></image>
             <view class="explore-card-text">可持续发展</view>
         </view>
 

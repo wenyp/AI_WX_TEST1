@@ -29,5 +29,10 @@ Page({
     } else {
       wx.navigateTo({ url: '/pages/demo/demo' })
     }
+  },
+  handleSettingsClick() {
+    wx.navigateTo({
+      url: '/pages/settings/settings'
+    })
   }
 })

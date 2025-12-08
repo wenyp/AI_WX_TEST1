@@ -1,0 +1,13 @@
+<navigation-bar title="设置" back="{{true}}" background="#fff"></navigation-bar>
+<view class="container">
+  <view class="content-list">
+    <block wx:for="{{menuItems}}" wx:key="id">
+      <view class="list-item" bindtap="handleItemClick" data-item="{{item}}">
+        <view class="item-text">{{item.title}}</view>
+        <view class="item-arrow">
+          <image class="arrow-icon" src="./assets/icon-arrow-right.svg"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

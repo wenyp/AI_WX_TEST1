@@ -13,7 +13,7 @@
   <!-- 用户信息 -->
   <view class="avatar"></view>
   <view class="user-name"><text>张伟伟</text></view>
-  <image class="icon-settings" src="./assets/icon-settings.svg" mode="aspectFit"></image>
+  <image class="icon-settings" src="./assets/icon-settings.svg" mode="aspectFit" bindtap="handleSettingsClick"></image>
 
   <!-- 身份认证横幅 -->
   <view class="identity-banner">

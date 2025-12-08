@@ -2,7 +2,8 @@
   "pages": [
     "pages/demo/demo",
     "pages/index/index",
-    "pages/personal-center/personal-center"
+    "pages/personal-center/personal-center",
+    "pages/settings/settings"
   ],
   "window": {
     "navigationBarTextStyle": "black",
