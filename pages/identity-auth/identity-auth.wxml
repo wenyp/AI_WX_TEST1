@@ -1,0 +1,25 @@
+<navigation-bar title="身份认证" back="{{true}}" color="black" background="#FFFFFF"></navigation-bar>
+<view class="container">
+  <!-- Identity Header -->
+  <view class="identity-header">
+    <view class="header-icon">
+      <image class="icon-img" src="./assets/icon-identity.svg" mode="aspectFit"></image>
+    </view>
+    <view class="header-text">
+      <view class="header-title">身份验证</view>
+      <view class="header-subtitle">选择您的身份类型进行验证</view>
+    </view>
+  </view>
+
+  <!-- Auth Options -->
+  <view class="auth-options">
+    <view class="auth-item" bindtap="onAuthItemTap" data-type="employee">
+      <view class="auth-text">员工认证</view>
+      <image class="auth-arrow" src="./assets/icon-arrow-right.svg"></image>
+    </view>
+    <view class="auth-item" bindtap="onAuthItemTap" data-type="customer">
+      <view class="auth-text">客户认证</view>
+      <image class="auth-arrow" src="./assets/icon-arrow-right.svg"></image>
+    </view>
+  </view>
+</view>

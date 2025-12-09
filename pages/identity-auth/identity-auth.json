@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "身份认证",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/navigation-bar"
+  }
+}

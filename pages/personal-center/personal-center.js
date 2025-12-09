@@ -30,9 +30,22 @@ Page({
       wx.navigateTo({ url: '/pages/demo/demo' })
     }
   },
+  handleBack() {
+    const pages = getCurrentPages()
+    if (pages.length > 1) {
+      wx.navigateBack()
+    } else {
+      wx.navigateTo({ url: '/pages/index/index' })
+    }
+  },
   handleSettingsClick() {
     wx.navigateTo({
       url: '/pages/settings/settings'
+    })
+  },
+  handleIdentityAuthClick() {
+    wx.navigateTo({
+      url: '/pages/identity-auth/identity-auth'
     })
   }
 })

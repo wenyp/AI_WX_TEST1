@@ -1,0 +1,96 @@
+page {
+  background-color: #F5F5F5;
+  font-family: "Inter", "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: #F5F5F5;
+  overflow: hidden;
+  box-sizing: border-box;
+  /* Reset app.wxss styles */
+  padding: 0;
+  display: block;
+}
+
+/* User Info Section / Identity Header */
+.identity-header {
+  margin: 35px 16px 20px 16px;
+  display: flex;
+  align-items: center;
+}
+
+.header-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #2563EB;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.icon-img {
+  width: 21px;
+  height: 18px;
+}
+
+.header-text {
+  margin-left: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-title {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1F2937;
+  line-height: 21px;
+}
+
+.header-subtitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #4B5563;
+  line-height: 16px;
+  margin-top: 4px;
+}
+
+/* Auth Options List */
+.auth-options {
+  width: auto;
+  margin: 0 16px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.auth-item {
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-item:not(:last-child) {
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.auth-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1F2937;
+}
+
+.auth-arrow {
+  width: 7px;
+  height: 12px;
+}

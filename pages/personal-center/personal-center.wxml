@@ -1,7 +1,7 @@
 <view class="container">
   <!-- 顶部导航栏（使用自适应高度） -->
   <view class="nav-bar" style="padding-top: {{statusBarHeight}}px; height: {{navContentHeight}}px;">
-    <view class="nav-back" style="height: {{menuButtonHeight}}px; width: {{menuButtonHeight}}px; margin-top: {{(navContentHeight - menuButtonHeight) / 2}}px;">
+    <view class="nav-back" bindtap="handleBack" style="height: {{menuButtonHeight}}px; width: {{menuButtonHeight}}px; margin-top: {{(navContentHeight - menuButtonHeight) / 2}}px;">
       <image class="icon-back" src="./assets/icon-back.svg" mode="aspectFit"></image>
     </view>
     <view class="nav-title" style="line-height: {{navContentHeight}}px;">个人中心</view>
@@ -16,7 +16,7 @@
   <image class="icon-settings" src="./assets/icon-settings.svg" mode="aspectFit" bindtap="handleSettingsClick"></image>
 
   <!-- 身份认证横幅 -->
-  <view class="identity-banner">
+  <view class="identity-banner" bindtap="handleIdentityAuthClick">
     <view class="id-left">
       <view class="id-icon-bg">
         <image class="icon-verify" src="./assets/icon-verify.svg" mode="aspectFit"></image>
